@@ -6,6 +6,7 @@ Branch: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; develop<br>
 ##目次
 * [提出者](#submitter)
 * [課題内容](#assignment)
+* [別の経路選択アルゴリズムの適用: プリム法](#prim)
 * [関連リンク](#links)
 
 
@@ -60,14 +61,33 @@ Branch: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; develop<br>
 なぜならば，プリム法は下記の通り，ダイクストラ法とは比べものにならないほど簡単に最短経路問題を解くことができるためである．<br>
 ```
 Prim(graph, start, goal):
-  1. 集合Vを空集合として初期化する．
-  2. Vにstartを加える．
-  3. Vがグラフのすべての頂点を含むまで、以下を繰り返す．
-    3-1. ノード∀u∈Vと∀v∉Vを結ぶコストが最小の辺(u,v)をgraphから選ぶ．
-    3-2. vをVに加える．
+  1. ノード集合Vを空集合として初期化する．
+  2. 連想配列pを初期化する．
+  3. Vにstartを加える．
+  4. Vがグラフのすべての頂点を含むまで、以下を繰り返す．
+    4-1. ∀u∈Vと∀v∉Vを結ぶ辺(u,v)のコストが最小のvを選ぶ．
+    4-2. vをVに加える．
+    4-3. p[v] = u
+  5. p[goal]からp[start]まで辿ったノード系列resultを得る．
+  6. resultを反転させた系列がstartからgoalまでの最小経路なので，それを返す．
 ```
 ここで，graphはグラフ，startは送信ノード，goalは受信ノードを示す．<br>
 
 
+
+
+
+##<a name="program_prim">プリム法の実装
+プリム法は
+[lib/prim.rb](lib/prim.rb)
+に実装した．<br>
+
+
+
+
+
+
+
 ##<a name="links">関連リンク
 * [課題 (経路選択アルゴリズムの実装と可視化)](https://github.com/handai-trema/deck/blob/develop/week7/assignment_routing_switch.md)
+* [lib/prim.rb](lib/prim.rb)
