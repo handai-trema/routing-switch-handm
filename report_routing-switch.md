@@ -7,6 +7,8 @@ Branch: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; develop<br>
 * [提出者](#submitter)
 * [課題内容](#assignment)
 * [別の経路選択アルゴリズムの適用: プリム法](#prim)
+* [プリム法の実装](#program_prim)
+* [プリム法の結果](#result_prim)
 * [関連リンク](#links)
 
 
@@ -80,14 +82,36 @@ Prim(graph, start, goal):
 ##<a name="program_prim">プリム法の実装
 プリム法は
 [lib/prim.rb](lib/prim.rb)
-に実装した．<br>
+の`Prim`クラスに実装した．<br>
+そして，
+[lib/dijkstra.rb](lib/dijkstra.rb)
+は
+[lib/graph.rb](lib/graph.rb)
+の`Graph.dijkstra`メソッドにおいて呼び出されるため，
+同メソッド内にて下記の通りに`Prim.run`メソッドを呼び出すことによって，
+グラフ`@graph`に対する`start`から`goal`までの最短経路`route`を求めるように変更した．<br>
+```
+route = Prim.new(@graph).run(source_mac, destination_mac)
+```
 
 
-
-
-
+##<a name="result_prim">プリム法の結果
+[trema.conf](trema.conf)
+に対して，`host1`から`host4`までの最短経路をプリム法によって求めた．<br>
+まず，下記のコマンドによって，`host4`から任意のホストへパケットを上げることで，コントローラがhost4のMACアドレスを把握する．<br>
+```
+./bin/trema send_packets --host host4 --source host2
+```
+次に，下記のコマンドによって，`host1`から`host4`までの最短経路を得る．<br>
+```
+./bin/trema send_packets --host host1 --source host4
+```
+そこで，得た最短経路は下記の通りである．<br>
 
 
 ##<a name="links">関連リンク
 * [課題 (経路選択アルゴリズムの実装と可視化)](https://github.com/handai-trema/deck/blob/develop/week7/assignment_routing_switch.md)
 * [lib/prim.rb](lib/prim.rb)
+* [lib/dijkstra.rb](lib/dijkstra.rb)
+* [lib/graph.rb](lib/graph.rb)
+* [trema.conf](trema.conf)
