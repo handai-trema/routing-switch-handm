@@ -82,15 +82,17 @@ Prim(graph, start, goal):
 ##<a name="program_prim">プリム法の実装
 プリム法は
 [lib/prim.rb](lib/prim.rb)
-の`Prim`クラスに実装した．<br>
+において`Prim`クラスとして実装した．<br>
 そして，
 [lib/dijkstra.rb](lib/dijkstra.rb)
-は
+の`Dijkstra`クラスは
 [lib/graph.rb](lib/graph.rb)
-の`Graph.dijkstra`メソッドにおいて呼び出されるため，
+の`Graph.dijkstra`メソッドでのみ呼び出されるため，
 同メソッド内にて下記の通りに`Prim.run`メソッドを呼び出すことによって，
-グラフ`@graph`に対する`start`から`goal`までの最短経路`route`を求めるように変更した．<br>
+グラフ`@graph`に対する送信ノードから受信ノードまでの最短経路`route`を求めるように変更した．<br>
+ここで，`source_mac`は送信ノードのMACアドレスを，`destination_mac`は送信ノードのMACアドレスである．<br>
 ```
+#route = Dijkstra.new(@graph).run(source_mac, destination_mac)
 route = Prim.new(@graph).run(source_mac, destination_mac)
 ```
 
