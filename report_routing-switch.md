@@ -73,7 +73,7 @@ Prim(graph, start, goal):
   5. p[goal]からp[start]まで辿ったノード系列resultを得る．
   6. resultを反転させた系列がstartからgoalまでの最小経路なので，それを返す．
 ```
-ここで，graphはグラフ，startは送信ノード，goalは受信ノードを示す．<br>
+ここで，`graph`はグラフ，`start`は送信ノード，`goal`は受信ノードを示す．<br>
 
 
 
