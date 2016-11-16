@@ -106,7 +106,12 @@ route = Prim.new(@graph).run(source_mac, destination_mac)
 ```
 ./bin/trema send_packets --host host1 --source host4
 ```
-そこで，得た最短経路は下記の通りである．<br>
+このとき得た最短経路は下記の通りである．<br>
+```
+Creating path: 11:11:11:11:11:11 -> 0x1:1 -> 0x1:4 -> 0x5:2 -> 0x5:5 -> 0x6:2 -> 0x6:1 -> 44:44:44:44:44:44
+```
+
+
 
 
 ##<a name="links">関連リンク
