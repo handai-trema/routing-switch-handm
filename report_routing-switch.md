@@ -6,7 +6,7 @@ Branch: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; develop<br>
 ##目次
 * [提出者](#submitter)
 * [課題内容](#assignment)
-* [別の経路選択アルゴリズムの適用: プリム法](#prim)
+* [別の経路選択アルゴリズム: プリム法](#prim)
 * [プリム法の実装](#program_prim)
 * [プリム法の結果](#result_prim)
 * [関連リンク](#links)
@@ -58,7 +58,7 @@ Branch: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; develop<br>
 
 
 
-##<a name="prim">別の経路選択アルゴリズムの適用: プリム法
+##<a name="prim">別の経路選択アルゴリズム: プリム法
 我々のグループではダイキストラ法の代わりにプリム法を採用した．<br>
 なぜならば，プリム法は下記の通り，ダイクストラ法とは比べものにならないほど簡単に最短経路問題を解くことができるためである．<br>
 ```
