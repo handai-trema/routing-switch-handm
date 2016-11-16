@@ -1,4 +1,5 @@
 require 'dijkstra'
+require 'prim'
 
 # Network topology graph
 class Graph
@@ -33,8 +34,10 @@ class Graph
   end
 
   def dijkstra(source_mac, destination_mac)
+    #puts "Graph.dijkstra()"
     return if @graph[destination_mac].empty?
-    route = Dijkstra.new(@graph).run(source_mac, destination_mac)
+    #route = Dijkstra.new(@graph).run(source_mac, destination_mac)
+    route = Prim.new(@graph).run(source_mac, destination_mac)
     route.reject { |each| each.is_a? Integer }
   end
 end
