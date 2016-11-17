@@ -5,7 +5,7 @@ require 'optparse'
 require 'path_manager'
 require 'sliceable_switch'
 require 'topology_controller'
-
+require 'view/html'
 # L2 routing switch
 class RoutingSwitch < Trema::Controller
   extend Forwardable

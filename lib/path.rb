@@ -6,6 +6,7 @@ class Path < Trema::Controller
   cattr_accessor(:all, instance_reader: false) { [] }
 
   def self.create(shortest_path, packet_in)
+  #  puts all[0].map(&:to_s).join(' -> ')
     new.save(shortest_path, packet_in).tap { |new_path| all << new_path }
   end
 
