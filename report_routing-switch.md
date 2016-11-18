@@ -10,7 +10,7 @@ Branch: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; develop<br>
 * [プリム法の実装](#program_prim)
 * [プリム法の結果](#result_prim)
 * [ブラウザでの可視化における変更点](#browser)
-* [本課題の可視化](thisalg#)
+* [本課題の可視化](#thisalg)
 * [関連リンク](#links)
 
 
