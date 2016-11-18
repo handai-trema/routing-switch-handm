@@ -101,8 +101,9 @@ def run(start, goal)
       focused_node = find(focused_node_name, @all)  #decided_nodesに含む任意のノードfocused_nodeを取得
       focused_node.neighbors.each do |each|         #focused_nodeと辺を成すノードに対してループ．
         neighbor = find(each, @all)                 #focused_nodeと辺を成すノードneighborを取得する．
-        if neighbor != nil  and  @undecided_nodes.include?(neighbor.name) == true  then
-          neighbor.set_prev(focused_node) #neighborをdecided_nodesへ追加する際のfocused_nodeを記録する．
+        ＃decided_nodesに含む任意のノードと辺を成すdecided_nodesに含まれる任意の点かどうかを判別する．
+        if neighbor != nil  and  @undecided_nodes.include?(neighbor.name) == true  then   #
+          neighbor.set_prev(focused_node)           #neighborをdecided_nodesへ追加する際のfocused_nodeを記録する．
           break_switch = true
           break
         end
