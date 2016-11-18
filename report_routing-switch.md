@@ -85,6 +85,40 @@ Prim(graph, start, goal):
 プリム法は
 [lib/prim.rb](lib/prim.rb)
 において`Prim`クラスとして実装した．<br>
+ここで，実際のコード（`Prim.run`メソッド）を下に示し，
+コメントアウトとして若干の説明を付す．<br>
+```
+def run(start, goal)
+  start_node = find(start, @all)              #スタートノードstartを取得する．
+  @undecided_nodes.delete(start_node.name)    #最短経路を成さないノード集合undecided_nodesからstartを削除する．
+  @decided_nodes.append(start_node.name)      #最短経路を成すノード集合decided_nodesへstartを追加する．
+  #最小全域木を求める．
+  while 0 < @undecided_nodes.length do    #最短経路を成さないノード集合undecided_nodesがなくなるまでループ．
+    #decided_nodesに含む任意のノードと辺を成すdecided_nodesに含まれる任意の点を探す．
+    neighbor = nil          #decided_nodesに含む任意のノードと辺を成すdecided_nodesに含まれる任意の点
+    break_switch = false    #for focused_node_name in @decided_nodes doから抜け出すスイッチ
+    for focused_node_name in @decided_nodes do      #decided_nodesに含むノードに対してループ．
+      focused_node = find(focused_node_name, @all)  #decided_nodesに含む任意のノードfocused_nodeを取得
+      focused_node.neighbors.each do |each|         #focused_nodeと辺を成すノードに対してループ．
+        neighbor = find(each, @all)                 #focused_nodeと辺を成すノードneighborを取得する．
+        if neighbor != nil  and  @undecided_nodes.include?(neighbor.name) == true  then
+          neighbor.set_prev(focused_node) #neighborをdecided_nodesへ追加する際のfocused_nodeを記録する．
+          break_switch = true
+          break
+        end
+      end
+     if break_switch == true then
+       break
+     end
+    end
+    @undecided_nodes.delete(neighbor.name)  #neighborをundecided_nodesから削除する．
+    @decided_nodes.append(neighbor.name)    #neighborをdecided_nodesへ追加する．
+  end
+  #ここからはDijkstraクラスと同じ．
+  result = path_to(goal)                #記録したneighborをdecided_nodesへ追加する際のfocused_nodeをgoalからstartまで辿り，反転させたものを結果resultとして得る．
+  result.include?(start) ? result : []  #resultにstartが含まれていれば，resultは連結グラフ内の系列であるのでresultを返し，そうでなければ空集合を返す．
+end
+```
 そして，
 [lib/dijkstra.rb](lib/dijkstra.rb)
 の`Dijkstra`クラスは
@@ -97,6 +131,9 @@ Prim(graph, start, goal):
 #route = Dijkstra.new(@graph).run(source_mac, destination_mac)
 route = Prim.new(@graph).run(source_mac, destination_mac)
 ```
+
+
+
 
 
 ##<a name="result_prim">プリム法の結果
@@ -115,6 +152,11 @@ route = Prim.new(@graph).run(source_mac, destination_mac)
 Creating path: 11:11:11:11:11:11 -> 0x1:1 -> 0x1:4 -> 0x5:2 -> 0x5:5 -> 0x6:2 -> 0x6:1 -> 44:44:44:44:44:44
 ```
 
+
+
+
+
+
 ##<a name="browser">ブラウザでの可視化における変更点
 
 ### Javascriptファイル生成プログラムの変更点
@@ -130,6 +172,11 @@ Creating path: 11:11:11:11:11:11 -> 0x1:1 -> 0x1:4 -> 0x5:2 -> 0x5:5 -> 0x6:2 ->
 ### プリム法を用いた経路選択方法の可視化
 
 ### ノードが変更されたときの応答
+
+
+
+
+
 
 
 ##<a name="links">関連リンク
