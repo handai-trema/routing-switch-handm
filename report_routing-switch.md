@@ -117,7 +117,7 @@ def run(start, goal)
   #ここからはDijkstraクラスと同じ．
   #上で求めた最小全域木からstartからgoalへの最短経路を求める．
   result = path_to(goal)                #記録したneighborをdecided_nodesへ追加する際のfocused_nodeをgoalからstartまで辿り，反転させたものを結果resultとして得る．
-  result.include?(start) ? result : []  #resultにstartが含まれていれば，resultは連結グラフ内の系列であるのでresultを返し，そうでなければ空集合を返す．
+  result.include?(start) ? result : []  #resultにstartが含まれていれば，resultは連結グラフ内の系列であるのでresultを返し，そうでなければ空の系列を返す．
 end
 ```
 そして，
