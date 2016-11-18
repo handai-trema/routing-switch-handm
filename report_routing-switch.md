@@ -93,10 +93,10 @@ def run(start, goal)
   @undecided_nodes.delete(start_node.name)    #最短経路を成さないノード集合undecided_nodesからstartを削除する．
   @decided_nodes.append(start_node.name)      #最短経路を成すノード集合decided_nodesへstartを追加する．
   #最小全域木を求める．
-  while 0 < @undecided_nodes.length do    #最短経路を成さないノード集合undecided_nodesがなくなるまでループ．
+  while 0 < @undecided_nodes.length do    #         最短経路を成さないノード集合undecided_nodesがなくなるまでループ．
     #decided_nodesに含む任意のノードと辺を成すdecided_nodesに含まれる任意の点を探す．
-    neighbor = nil          #decided_nodesに含む任意のノードと辺を成すdecided_nodesに含まれる任意の点
-    break_switch = false    #for focused_node_name in @decided_nodes doから抜け出すスイッチ
+    neighbor = nil                                  #decided_nodesに含む任意のノードと辺を成すdecided_nodesに含まれる任意の点
+    break_switch = false                            #for focused_node_name in @decided_nodes doから抜け出すスイッチ
     for focused_node_name in @decided_nodes do      #decided_nodesに含むノードに対してループ．
       focused_node = find(focused_node_name, @all)  #decided_nodesに含む任意のノードfocused_nodeを取得
       focused_node.neighbors.each do |each|         #focused_nodeと辺を成すノードに対してループ．
