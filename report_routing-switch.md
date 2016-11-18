@@ -128,7 +128,7 @@ end
 の`Graph.dijkstra`メソッドでのみ呼び出されるため，
 同メソッド内にて下記の通りに`Prim.run`メソッドを呼び出すことによって，
 グラフ`@graph`に対する送信ノードから受信ノードまでの最短経路`route`を求めるように変更した．<br>
-ここで，`source_mac`は送信ノードのMACアドレスを，`destination_mac`は送信ノードのMACアドレスである．<br>
+ここで，`source_mac`は送信ノードのMACアドレスを，`destination_mac`は受信ノードのMACアドレスである．<br>
 ```
 #route = Dijkstra.new(@graph).run(source_mac, destination_mac)
 route = Prim.new(@graph).run(source_mac, destination_mac)
