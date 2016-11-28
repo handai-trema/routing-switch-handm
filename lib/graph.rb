@@ -1,6 +1,6 @@
 require 'dijkstra'
 require 'prim'
-
+require 'view/html'
 # Network topology graph
 class Graph
   def initialize

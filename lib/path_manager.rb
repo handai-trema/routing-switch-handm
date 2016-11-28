@@ -13,6 +13,7 @@ class PathManager < Trema::Controller
   def packet_in(_dpid, packet_in)
     path = maybe_create_shortest_path(packet_in)
     ports = path ? [path.out_port] : @graph.external_ports
+#    ports = path
     ports.each do |each|
       send_packet_out(each.dpid,
                       raw_data: packet_in.raw_data,
@@ -50,5 +51,7 @@ class PathManager < Trema::Controller
       @graph.dijkstra(packet_in.source_mac, packet_in.destination_mac)
     return unless shortest_path
     Path.create shortest_path, packet_in
+    #logger.info(shortest_path.join(","))
+ #   @graph.html(shortest_path)
   end
 end

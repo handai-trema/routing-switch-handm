@@ -98,6 +98,9 @@ class Prim
     end
     result = path_to(goal)
     result.include?(start) ? result : []
+    
+    res = Html.new().update(result,@all)
+
   end
 
   private
