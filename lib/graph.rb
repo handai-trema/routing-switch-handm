@@ -38,6 +38,6 @@ class Graph
     return if @graph[destination_mac].empty?
     #route = Dijkstra.new(@graph).run(source_mac, destination_mac)
     route = Prim.new(@graph).run(source_mac, destination_mac)
-    route.reject { |each| each.is_a? Integer }
+ #   route.reject { |each| each.is_a? Integer }
   end
 end

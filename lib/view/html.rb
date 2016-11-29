@@ -22,6 +22,7 @@ require 'json'
 
   #    @all = allgraph.map { |name, neighbors| Node.new(name, neighbors) }	#All nodes    
       graph.each do |key,value| 
+	puts key
 	if key.to_s[2]==':' then
 	  currentnode=key.to_s
 	  #currentnode=value.to_s
